@@ -1,0 +1,24 @@
+import time
+from selenium.webdriver.common.by import By
+from selenium import webdriver
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.chrome.service import Service as ChromeService
+#from webdriver_manager.chrome import ChromeDriverManager
+driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
+driver.implicitly_wait(10)
+driver.get("https://www.saucedemo.com/")
+driver.maximize_window()
+driver.find_element(By.ID, "user-name").send_keys("standard_user")
+driver.find_element(By.ID,"password").send_keys("secret_sauce")
+driver.find_element(By.ID, "login-button").click()
+print("login sucessfull")
+driver.find_element(By.CLASS_NAME, "inventory_item_name").click()
+driver.find_element(By.ID, "add-to-cart-sauce-labs-backpack").click()
+print("add Product")
+driver.find_element(By.NAME, "remove-sauce-labs-backpack").click()
+print("remove Product")
+driver.find_element(By.ID, "back-to-products").click()
+print("back to main page")
+driver.find_element(By.ID, "react-burger-menu-btn").click()
+driver.find_element(By.ID, "about_sidebar_link").click()
+time.sleep(5)
